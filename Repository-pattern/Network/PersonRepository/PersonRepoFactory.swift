@@ -24,13 +24,14 @@ class PersonFactory: RepoFactory {
         case mock
         case remote
         case fakeApi
+        case temp
     }
     
     typealias RepositoryType = any PersonRepository
     
     func initRepository(_ factory: FactoryType) -> any PersonRepository {
         switch factory {
-        case .mock:
+        case .mock, .temp:
             MockPersonRepository()
         case .remote:
             RemotePersonRepository()
